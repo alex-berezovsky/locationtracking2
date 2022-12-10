@@ -43,7 +43,7 @@ export default function App() {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
+        setErrorMsg('Foreground Permission was not granted. You need to allow us to access location');
         return;
       }
 
@@ -55,7 +55,7 @@ export default function App() {
     })();
   }, []);
 
-  let text = 'Waiting..';
+  let text = 'Loading the permissions!';
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
